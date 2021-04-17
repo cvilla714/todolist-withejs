@@ -4,17 +4,34 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  //   res.send(`<h1>Hello There</h1>`);
   const today = new Date();
-  const day = '';
-  // if (today.getDay() === 5) {
-  if (today.getDay() === 6 || today.getDay() === 0) {
-    day = 'Weekend';
-    // res.send(`Yay it's the weekend!`);
-  } else {
-    day = 'Weekday';
-    // res.send(`Boo! I have to work`);
+  const currentday = today.getDay();
+  let day = '';
+
+  switch (currentday) {
+    case 0:
+      day = 'Sunday';
+      break;
+    case 1:
+      day = 'Monda';
+      break;
+    case 2:
+      day = 'Tuesday';
+      break;
+    case 3:
+      day = 'Wednesday';
+      break;
+    case 4:
+      day = 'Thursday';
+      break;
+    case 5:
+      day = 'Friday';
+      break;
+    case 6:
+      day = 'Saturday';
+      break;
   }
+
   res.render('list', { kindOfDay: day });
 });
 
