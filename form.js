@@ -5,7 +5,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 // let newitem = '';
-let newtaks = [];
+let newtaks = ['Buy Groceries', 'Buy Milk', 'Buy IceCream'];
 
 app.get('/', (req, res) => {
   const today = new Date();
