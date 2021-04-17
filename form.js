@@ -4,7 +4,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
-let newitem = '';
+// let newitem = '';
+let newtaks = [];
 
 app.get('/', (req, res) => {
   const today = new Date();
@@ -16,7 +17,8 @@ app.get('/', (req, res) => {
   };
 
   let day = today.toLocaleDateString('en-US', options);
-  res.render('form', { kindOfDay: day, newlistitem: newitem });
+  //   res.render('form', { kindOfDay: day, newlistitem: newitem });
+  res.render('form', { kindOfDay: day, newlistitem: newtaks });
 });
 
 app.post('/', (req, res) => {
@@ -24,7 +26,8 @@ app.post('/', (req, res) => {
   console.log(req.body.wakanda);
   //   let newitem = req.body.wakanda;
   //   res.render('form', { newlistitem: newitem });
-  newitem = req.body.wakanda;
+  let newitem = req.body.wakanda;
+  newtaks.push(newitem);
   res.redirect('/');
 });
 
