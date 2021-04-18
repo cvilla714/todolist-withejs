@@ -1,27 +1,32 @@
-const express = require('express');
+import express from 'express';
+// const express = require('express');
 const port = 5000;
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+import day from './datefunction.js';
 
 // let newitem = '';
 let newtaks = ['Buy Groceries', 'Buy Milk', 'Buy IceCream'];
 let workItems = [];
 
 app.get('/', (req, res) => {
-  const today = new Date();
+  day();
+  console.log(day);
+  console.log(day());
+  // const today = new Date();
 
-  const options = {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-  };
+  // const options = {
+  //   weekday: 'long',
+  //   day: 'numeric',
+  //   month: 'long',
+  // };
 
-  let day = today.toLocaleDateString('en-US', options);
-  //   res.render('form', { kindOfDay: day, newlistitem: newitem });
+  // let day = today.toLocaleDateString('en-US', options);
+  // //   res.render('form', { kindOfDay: day, newlistitem: newitem });
   // res.render('form', { kindOfDay: day, newlistitem: newtaks });
-  res.render('form', { listTitle: day, newlistitem: newtaks });
+  res.render('form', { listTitle: day(), newlistitem: newtaks });
 });
 
 app.post('/', (req, res) => {
