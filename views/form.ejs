@@ -9,7 +9,8 @@
   </head>
   <body>
     <div class="box" id="heading">
-      <h1><%= kindOfDay %></h1>
+      <!-- <h1><%# kindOfDay %></h1> -->
+      <h1><%= listTitle %></h1>
     </div>
     <div class="box">
       <% newlistitem.map((item)=>{ %>
@@ -20,7 +21,7 @@
       <%})%>
       <form class="item" action="/" method="POST">
         <input type="text" name="wakanda" placeholder="New item" />
-        <button type="submit">+</button>
+        <button type="submit" name="button">+</button>
       </form>
     </div>
   </body>
