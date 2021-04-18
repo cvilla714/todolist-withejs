@@ -25,13 +25,22 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
+  let item = req.body.wakanda;
+  let newitem = req.body.wakanda;
   console.log(req.body);
   console.log(req.body.wakanda);
   //   let newitem = req.body.wakanda;
   //   res.render('form', { newlistitem: newitem });
-  let newitem = req.body.wakanda;
-  newtaks.push(newitem);
-  res.redirect('/');
+  if (req.body.list === 'Work List') {
+    workItems.push(item);
+    res.redirect('/work');
+  } else {
+    newtaks.push(newitem);
+    res.redirect('/');
+  }
+  // let newitem = req.body.wakanda;
+  // newtaks.push(newitem);
+  // res.redirect('/');
 });
 
 app.get('/work', (req, res) => {
@@ -40,8 +49,8 @@ app.get('/work', (req, res) => {
 
 app.post('/work', (req, rest) => {
   console.log(req.body);
-  let item = req.body.wakanda;
-  workItems.push(item);
+  // let item = req.body.wakanda;
+  // workItems.push(item);
   res.redirect('/work');
 });
 
