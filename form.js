@@ -7,6 +7,7 @@ app.use(express.static('public'));
 
 // let newitem = '';
 let newtaks = ['Buy Groceries', 'Buy Milk', 'Buy IceCream'];
+let workItems = [];
 
 app.get('/', (req, res) => {
   const today = new Date();
@@ -19,7 +20,8 @@ app.get('/', (req, res) => {
 
   let day = today.toLocaleDateString('en-US', options);
   //   res.render('form', { kindOfDay: day, newlistitem: newitem });
-  res.render('form', { kindOfDay: day, newlistitem: newtaks });
+  // res.render('form', { kindOfDay: day, newlistitem: newtaks });
+  res.render('form', { listTitle: day, newlistitem: newtaks });
 });
 
 app.post('/', (req, res) => {
@@ -30,6 +32,17 @@ app.post('/', (req, res) => {
   let newitem = req.body.wakanda;
   newtaks.push(newitem);
   res.redirect('/');
+});
+
+app.get('/work', (req, res) => {
+  res.render('form', { listTitle: 'Work List', newlistitem: workItems });
+});
+
+app.post('/work', (req, rest) => {
+  console.log(req.body);
+  let item = req.body.wakanda;
+  workItems.push(item);
+  res.redirect('/work');
 });
 
 app.listen(port, () => {
