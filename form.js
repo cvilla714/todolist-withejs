@@ -10,10 +10,6 @@ let newtaks = ['Buy Groceries', 'Buy Milk', 'Buy IceCream'];
 let workItems = [];
 
 app.get('/', (req, res) => {
-  date();
-  console.log(date);
-  console.log(date());
-
   let day = date();
   res.render('form', { listTitle: day, newlistitem: newtaks });
 });
