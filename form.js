@@ -5,16 +5,18 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-import day from './datefunction.js';
+import date from './datefunction.js';
 
 // let newitem = '';
 let newtaks = ['Buy Groceries', 'Buy Milk', 'Buy IceCream'];
 let workItems = [];
 
 app.get('/', (req, res) => {
-  day();
-  console.log(day);
-  console.log(day());
+  date();
+  console.log(date);
+  console.log(date());
+
+  let day = date();
   // const today = new Date();
 
   // const options = {
@@ -26,7 +28,7 @@ app.get('/', (req, res) => {
   // let day = today.toLocaleDateString('en-US', options);
   // //   res.render('form', { kindOfDay: day, newlistitem: newitem });
   // res.render('form', { kindOfDay: day, newlistitem: newtaks });
-  res.render('form', { listTitle: day(), newlistitem: newtaks });
+  res.render('form', { listTitle: day, newlistitem: newtaks });
 });
 
 app.post('/', (req, res) => {
