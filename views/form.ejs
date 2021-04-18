@@ -8,18 +8,20 @@
     <title>ToDo List</title>
   </head>
   <body>
-    <h1><%= kindOfDay %></h1>
-    <ul>
-      <!-- <li>Buy Groceries</li>
-      <li>Buy Milk</li>
-      <li>Buy IceCream</li> -->
+    <div class="box" id="heading">
+      <h1><%= kindOfDay %></h1>
+    </div>
+    <div class="box">
       <% newlistitem.map((item)=>{ %>
-      <li><%=item %></li>
+      <div class="item">
+        <input type="checkbox" />
+        <p><%=item %></p>
+      </div>
       <%})%>
-    </ul>
-    <form action="/" method="POST">
-      <input type="text" name="wakanda" placeholder="item" />
-      <button type="submit">Add a task</button>
-    </form>
+      <form class="item" action="/" method="POST">
+        <input type="text" name="wakanda" placeholder="New item" />
+        <button type="submit">+</button>
+      </form>
+    </div>
   </body>
 </html>
